@@ -1,33 +1,8 @@
-import reactAtom from './assets/react-core-concepts.png'
 import { CORE_CONCEPTS } from './data.js'
-
-const reactDescriptions = ["Fundamental","Crucial","Core"]
-const genRandom = (max) => Math.floor(Math.random() * (max + 1))
-
-
-function Header(){
-  const description = reactDescriptions[genRandom(2)]
-  return(
-    <header>
-        <img src={reactAtom} alt="Stylized atom" />
-        <h1>React Essentials</h1>
-        <p>
-          {description} React concepts you will need for almost any app you are
-          going to build!
-        </p>
-      </header>
-  )
-}
-
-function CoreConcept({title, description, image}){
-  return (
-    <li>
-      <img src={image} alt={title}/>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  )
-}
+import Header from './components/Header.jsx'
+import CoreConcept from './components/CoreConcept.jsx';
+import TapButton from './components/TapButton.jsx';
+import { Toast } from 'bootstrap';
 
 function App() {
   return (
@@ -43,7 +18,16 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]}/>
           </ul>
         </section>
-        <h2>Time to get started!</h2>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TapButton>Components</TapButton>
+            <TapButton>JSX</TapButton>
+            <TapButton>Props</TapButton>
+            <TapButton>Test</TapButton>
+          
+          </menu>
+        </section>
       </main>
     </div>
   );
