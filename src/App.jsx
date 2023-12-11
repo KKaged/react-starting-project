@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import { CORE_CONCEPTS } from './data.js'
 import Header from './components/Header.jsx'
 import CoreConcept from './components/CoreConcept.jsx';
 import TapButton from './components/TapButton.jsx';
 
 function App() {
+  const [selectedTopic, setSelectedTopic] = useState("Please select a tab")
+  //useState basically re runs the App function when the state/page is changed
   function handleSelect(selectedButton){
-    alert(`Clicked ${selectedButton}`); 
+    //selectedButton => 'components', 'jsx', 'props', 'state'
+    setSelectedTopic(selectedButton)
   }
   return (
     <div>
@@ -28,7 +32,7 @@ function App() {
             <TapButton onSelect={() => handleSelect(`props`)}>Props</TapButton>
             <TapButton onSelect={() => handleSelect(`state`)}>State</TapButton>
           </menu>
-          Bruh
+          {selectedTopic}
         </section>
       </main>
     </div>
