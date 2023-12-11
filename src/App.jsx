@@ -2,11 +2,10 @@ import { CORE_CONCEPTS } from './data.js'
 import Header from './components/Header.jsx'
 import CoreConcept from './components/CoreConcept.jsx';
 import TapButton from './components/TapButton.jsx';
-import { Toast } from 'bootstrap';
 
 function App() {
-  function handleSelect(){
-    alert('Selected!');
+  function handleSelect(selectedButton){
+    alert(`Clicked ${selectedButton}`); 
   }
   return (
     <div>
@@ -24,12 +23,12 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TapButton onSelect={handleSelect}>Components</TapButton>
-            <TapButton onSelect={handleSelect}>JSX</TapButton>
-            <TapButton onSelect={handleSelect}>Props</TapButton>
-            <TapButton onSelect={handleSelect}>Test</TapButton>
+            <TapButton onSelect={() => handleSelect(`components`)}>Components</TapButton>
+            <TapButton onSelect={() => handleSelect(`jsx`)}>JSX</TapButton>
+            <TapButton onSelect={() => handleSelect(`props`)}>Props</TapButton>
+            <TapButton onSelect={() => handleSelect(`state`)}>State</TapButton>
           </menu>
-          Dynamic Content
+          Bruh
         </section>
       </main>
     </div>
