@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { CORE_CONCEPTS } from './data.js'
+import { EXAMPLES } from './data.js'
 import Header from './components/Header.jsx'
 import CoreConcept from './components/CoreConcept.jsx';
 import TapButton from './components/TapButton.jsx';
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("Please select a tab")
+  const [selectedTopic, setSelectedTopic] = useState("components") //Initial state is components
   //useState basically re runs the App function when the state/page is changed
   function handleSelect(selectedButton){
     //selectedButton => 'components', 'jsx', 'props', 'state'
@@ -32,7 +33,16 @@ function App() {
             <TapButton onSelect={() => handleSelect(`props`)}>Props</TapButton>
             <TapButton onSelect={() => handleSelect(`state`)}>State</TapButton>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            {/* Inside the brackets is the name of the chosen object */}
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
