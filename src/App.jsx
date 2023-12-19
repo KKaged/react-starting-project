@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { CORE_CONCEPTS } from './data.js'
 import { EXAMPLES } from './data.js'
 import Header from './components/Header.jsx'
@@ -28,7 +28,7 @@ function App() {
     )
   }
   return (
-    <div>
+    <Fragment>
       <Header />
       <main>
         <section id="core-concepts">
@@ -64,7 +64,7 @@ function App() {
           {/* If the selectedTopic is not empty, then it will show the second part of the ternary operator */}
         </section>
       </main>
-    </div>
+    </Fragment>
   );
 }
 
