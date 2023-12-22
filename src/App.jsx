@@ -43,10 +43,10 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TapButton isSelected={selectedTopic === 'components'} onSelect={handleSelect}>Components</TapButton>
-            <TapButton>JSX</TapButton>
-            <TapButton>Props</TapButton>
-            <TapButton>State</TapButton>
+            <TapButton onSelect={handleSelect}>Components</TapButton>
+            <TapButton onSelect={handleSelect}>JSX</TapButton>
+            <TapButton onSelect={handleSelect}>Props</TapButton>
+            <TapButton onSelect={handleSelect}>State</TapButton>
           </menu>{/*The isSelected is a boolean value, so it will either be true or false */}
 
         </section>
