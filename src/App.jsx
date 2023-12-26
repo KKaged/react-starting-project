@@ -8,7 +8,7 @@ import { ClassNames } from '@emotion/react';
 import { NULL } from 'sass';
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState(null) //Initial state is empty (false)
+  const [selectedTopic, setSelectedTopic] = useState() //Initial state is empty (false)
   //useState basically re runs the App function when the state/page is changed
   function handleSelect(selectedButton){
     //selectedButton => 'components', 'jsx', 'props', 'state'
@@ -35,14 +35,14 @@ function App() {
             <TapButton onSelect={() =>handleSelect('props')}>Props</TapButton>
             <TapButton onSelect={() =>handleSelect('state')}>State</TapButton>
           </menu>{/*The isSelected is a boolean value, so it will either be true or false */}
-          <div id="tab-content">
             {!selectedTopic ? <p>Please select a topic.</p> : null}
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            {selectedTopic ? (<div id="tab-content"> <h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
               <code>{EXAMPLES[selectedTopic].code}</code>
             </pre>
-          </div>
+            </div>) : null}
+            {/* If the selectedTopic is true, then it will display the content, if not, it will display nothing */}
         </section>
       </main>
     </>
