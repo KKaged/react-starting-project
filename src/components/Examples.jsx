@@ -1,7 +1,9 @@
 import TapButton from "./TapButton"
 import { useState } from 'react';
-import { EXAMPLES } from '../data.js'
+import { CORE_CONCEPTS, EXAMPLES } from '../data.js'
 import Section from "./Section"
+import Tabs from "./Tabs.jsx";
+import { Tab } from "bootstrap";
 
 export default function Examples(){
     const [selectedTopic, setSelectedTopic] = useState() //Initial state is empty (false)
@@ -13,13 +15,18 @@ export default function Examples(){
     
     return (
         <Section id='examples' title={"Examples"}>
-          <menu>
-            <TapButton isSelected={selectedTopic === 'components'} onClick={() =>handleSelect('components')}>Components</TapButton>
+          <Tabs 
+          buttonsContainer="menu"
+          buttons={
+          <>
+            {CORE_CONCEPTS.map((concepts) => (<TapButton key={concepts.title} isSelected={selectedTopic === concepts.title.toLowerCase()} onClick={() => handleSelect(concepts.title.toLowerCase())}>{concepts.title}</TapButton>))}
+            {/* <TapButton isSelected={selectedTopic === 'components'} onClick={() =>handleSelect('components')}>Components</TapButton>
             <TapButton isSelected={selectedTopic === 'jsx'} onClick={() =>handleSelect('jsx')}>JSX</TapButton>
             <TapButton isSelected={selectedTopic === 'props'} onClick={() =>handleSelect('props')}>Props</TapButton>
-            <TapButton isSelected={selectedTopic === 'state'} onClick={() =>handleSelect('state')}>State</TapButton>
-          </menu>{/*The isSelected is a boolean value, so it will either be true or false */}
-            {!selectedTopic ? <p>Please select a topic.</p> : null}
+            <TapButton isSelected={selectedTopic === 'state'} onClick={() =>handleSelect('state')}>State</TapButton> */}
+          </>
+        }>
+          {!selectedTopic ? <p>Please select a topic.</p> : null}
             {selectedTopic ? (
             <div id="tab-content"> 
             <h3>{EXAMPLES[selectedTopic].title}</h3>
@@ -29,6 +36,7 @@ export default function Examples(){
             </pre>
             </div>
             ) : null}
+        </Tabs>
             {/* If the selectedTopic is true, then it will display the content, if not, it will display nothing */}
         </Section>
     )
