@@ -16,14 +16,16 @@ export default function Examples(){
     return (
         <Section id='examples' title={"Examples"}>
           <Tabs 
-          buttonsContainer="menu"
+          ButtonsContainer="menu"
           buttons={
           <>
             {CORE_CONCEPTS.map((concepts) => (<TapButton key={concepts.title} isSelected={selectedTopic === concepts.title.toLowerCase()} onClick={() => handleSelect(concepts.title.toLowerCase())}>{concepts.title}</TapButton>))}
-            {/* <TapButton isSelected={selectedTopic === 'components'} onClick={() =>handleSelect('components')}>Components</TapButton>
+            {/* 
+            <TapButton isSelected={selectedTopic === 'components'} onClick={() =>handleSelect('components')}>Components</TapButton>
             <TapButton isSelected={selectedTopic === 'jsx'} onClick={() =>handleSelect('jsx')}>JSX</TapButton>
             <TapButton isSelected={selectedTopic === 'props'} onClick={() =>handleSelect('props')}>Props</TapButton>
-            <TapButton isSelected={selectedTopic === 'state'} onClick={() =>handleSelect('state')}>State</TapButton> */}
+            <TapButton isSelected={selectedTopic === 'state'} onClick={() =>handleSelect('state')}>State</TapButton> 
+            */}
           </>
         }>
           {!selectedTopic ? <p>Please select a topic.</p> : null}
